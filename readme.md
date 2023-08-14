@@ -1,0 +1,6 @@
+# QA Testing Demo
+
+This is a finished version of the QA Testing demo. Use this for all your referencing needs!
+
+Here is the link to the manual testing section:
+https://trello.com/b/D2VHT4jD/qa-testing-demo
