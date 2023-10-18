@@ -16,22 +16,24 @@ let testData = {
     roomNumber: 3
 }
 
-test('should run', () => {
-  expect(2).toBe(2)
-})
+test('should run', () => expect(2).toBe(2))
 
-test('first name is Patten', () => {
-  expect(testData.firstName).toBe('Patten')
-})
+test('first name should be Patten', () => expect(testData.firstName).toBe('Patten'))
 
 describe('formatTitle Tests', () => {
   test('formatTitle returns a string', () => {
     let formattedTitle = formatTitle(testData.title)
     expect(typeof formattedTitle).toBe('string')
   })
+
   test('formatTitle formats title correctly', () => {
     let formattedTitle = formatTitle(testData.title)
     expect(formattedTitle).toBe('Nulla Ac')
+
+    // We can also use dynamic variables as comparison values
+    // let expectedTitle = 'Nulla Ac'
+    // let formattedTitle = formatTitle(testData.title)
+    // expect(formattedTitle).toBe(expectedTitle)
   })
 })
 
@@ -40,6 +42,7 @@ describe('shortenBio Tests', () => {
     let shortBio = shortenBio(testData.bio)
     expect(shortBio.length).toBeLessThan(testData.bio.length)
   })
+
   test('shortenBio adds periods to the end of the string', () => {
     let shortBio = shortenBio(testData.bio)
     expect(shortBio).toContain('...')
@@ -51,9 +54,26 @@ describe('convertLength Tests', () => {
     let result = convertLength(testData.length)
     expect(result).toHaveLength(2)
   })
+  
   test('convertLength can handle numbers under 60', () => {
-    const testNum = 30
-    let result = convertLength(testNum)
-    expect(result[1]).toEqual(testNum)
+    let result = convertLength(30)
+    // expect(result[0]).toEqual(0)
+    expect(result[0]).toBe(0)
+    // toBe works in this case because the comparison value of 0 is a simple data type not stored anywhere
+    // expect(result[1]).toEqual(30)
   })
+})
+
+// this will pass because toEqual only compares the values of the two objects
+test('toBe vs toEqual', () => {
+  const myObj = {myNum: 4}
+  const myObjTwo = {myNum: 4}
+  expect(myObj).toEqual(myObjTwo)
+})
+
+// this will fail because toBe compares the values AND where the values are being stored
+test('toBe vs toEqual again', () => {
+  const myObj = {myNum: 4}
+  const myObjTwo = {myNum: 4}
+  expect(myObj).toBe(myObjTwo)
 })
