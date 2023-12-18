@@ -24,9 +24,10 @@ describe('formatTitle Tests', () => {
   test('formatTitle returns a string', () => {
     let formattedTitle = formatTitle(testData.title)
     expect(typeof formattedTitle).toBe('string')
+    // toBe works here because the typeof and string comparision values are not stored anywhere
   })
 
-  test('formatTitle formats title correctly', () => {
+  test('formatTitle formats the title', () => {
     let formattedTitle = formatTitle(testData.title)
     expect(formattedTitle).toBe('Nulla Ac')
 
@@ -38,7 +39,7 @@ describe('formatTitle Tests', () => {
 })
 
 describe('shortenBio Tests', () => {
-  test('shortenBio shortens the bio string', () => {
+  test('shortenBio shortens the bio', () => {
     let shortBio = shortenBio(testData.bio)
     expect(shortBio.length).toBeLessThan(testData.bio.length)
   })
@@ -58,9 +59,10 @@ describe('convertLength Tests', () => {
   test('convertLength can handle numbers under 60', () => {
     let result = convertLength(30)
     // expect(result[0]).toEqual(0)
-    expect(result[0]).toBe(0)
+    // expect(result[0]).toBe(0)
     // toBe works in this case because the comparison value of 0 is a simple data type not stored anywhere
-    // expect(result[1]).toEqual(30)
+
+    expect(result[1]).toEqual(30)
   })
 })
 
